@@ -8,14 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Data\Profiles\" />
-    <Folder Include="Models\Entities\" />
-    <Folder Include="Models\DTOs\" />
-    <Folder Include="Models\Enums\" />
-    <Folder Include="Resources\" />
-    <Folder Include="Util\" />
-    <Folder Include="Repositories\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,8 @@
 using KMBrigadeiria.Data;
-using Microsoft.AspNetCore.Mvc.Filters;
+using KMBrigadeiria.Repositories;
+using KMBrigadeiria.Repositories.Interfaces;
+using KMBrigadeiria.Services;
+using KMBrigadeiria.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +10,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+#region Service Layer
+builder.Services.AddScoped<IAddressService, AddressService>();
+#endregion
+
+#region Repository Layer
+builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+#endregion
 
 #region DB Configuration
 string mySQLConnectionString = builder.Configuration.GetConnectionString("KMBrigadeiriaConnection");
