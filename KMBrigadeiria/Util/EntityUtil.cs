@@ -1,5 +1,7 @@
-﻿using KMBrigadeiria.Models.Enums;
+﻿using KMBrigadeiria.Models.Entities;
+using KMBrigadeiria.Models.Enums;
 using KMBrigadeiria.Models.Exceptions.RepositoryExceptions;
+using KMBrigadeiria.Models.Exceptions.ServiceExceptions;
 
 namespace KMBrigadeiria.Util
 {
@@ -10,6 +12,14 @@ namespace KMBrigadeiria.Util
             if (entity == null)
             {
                 throw new EntityNotFoundException(entityType);
+            }
+        }
+
+        public static void VerifyClientAndAddressRelationship(long? clientAddressId, long addressId)
+        {
+            if (clientAddressId == null || clientAddressId != addressId)
+            {
+                throw new InvalidAddressIdException();
             }
         }
     }

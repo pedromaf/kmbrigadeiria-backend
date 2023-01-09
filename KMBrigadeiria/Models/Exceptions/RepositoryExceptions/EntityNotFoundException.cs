@@ -15,8 +15,9 @@ namespace KMBrigadeiria.Models.Exceptions.RepositoryExceptions
         {
             return entity switch
             {
-                EntitiesEnum.ADDRESS => StringMessages.AddressNotFound,
-                _ => StringMessages.EntityNotFound
+                EntitiesEnum.ADDRESS => StringMessages.ADDRESS_NOT_FOUND,
+                EntitiesEnum.CLIENT => StringMessages.CLIENT_NOT_FOUND,
+                _ => StringMessages.ENTITY_NOT_FOUND
             };
         }
     }

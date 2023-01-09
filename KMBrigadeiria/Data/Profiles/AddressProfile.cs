@@ -9,6 +9,7 @@ namespace KMBrigadeiria.Data.Profiles
         public AddressProfile()
         {
             CreateMap<CreateAddressDTO, Address>();
+            CreateMap<UpdateAddressDTO, Address>();
             CreateMap<Address, ReadAddressDTO>();
         }
     }

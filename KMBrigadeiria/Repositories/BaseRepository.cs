@@ -29,7 +29,7 @@ namespace KMBrigadeiria.Repositories
             _context.SaveChanges();
         }
 
-        public TEntity Get(long id)
+        public TEntity Get(long? id)
         {
             return _dbSet.Find(id);
         }

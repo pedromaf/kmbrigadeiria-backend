@@ -7,7 +7,7 @@ namespace KMBrigadeiria.Repositories.Interfaces
         public void Add(TEntity entity);
         public void Update(TEntity entity);
         public void Delete(TEntity entity);
-        public TEntity Get(long id);
+        public TEntity Get(long? id);
         public IEnumerable<TEntity> GetAll();
     }
 }
