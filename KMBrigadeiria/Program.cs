@@ -24,7 +24,6 @@ builder.Services.AddScoped<IClientRepository, ClientRepository>();
 string mySQLConnectionString = builder.Configuration.GetConnectionString("KMBrigadeiriaConnection");
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 30));
 
-// Connecting with MySQL database.
 builder.Services.AddDbContext<KMContext>(opts => opts.UseLazyLoadingProxies().UseMySql(mySQLConnectionString, serverVersion));
 #endregion
 

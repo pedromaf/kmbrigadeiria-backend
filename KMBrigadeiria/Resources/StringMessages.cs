@@ -19,5 +19,9 @@
         #region ClientAlreadyHaveAddressException Messages
         public static readonly string CLIENT_ALREADY_HAVE_ADDRESS = "O cliente já possui um endereço cadastrado.";
         #endregion
+
+        #region ValidIdAttribute Messages
+        public static readonly string INVALID_ID_ATTRIBUTE = "A entidade passada não existe.";
+        #endregion
     }
 }

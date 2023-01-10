@@ -1,5 +1,4 @@
-﻿using KMBrigadeiria.Models.Entities;
-using KMBrigadeiria.Models.Enums;
+﻿using KMBrigadeiria.Models.Enums;
 using KMBrigadeiria.Models.Exceptions.RepositoryExceptions;
 using KMBrigadeiria.Models.Exceptions.ServiceExceptions;
 

@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using KMBrigadeiria.Models.Enums;
+using KMBrigadeiria.Models.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace KMBrigadeiria.Models.DTOs
 {
     public class UpdateAddressDTO
     {
-        [Required]
+        [ValidId]
         public long Id { get; set; }
 
         [Required, MaxLength(50)]
