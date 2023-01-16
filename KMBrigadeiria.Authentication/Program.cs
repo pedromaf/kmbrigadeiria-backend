@@ -1,8 +1,5 @@
-using KMBrigadeiria.Data;
-using KMBrigadeiria.Repositories;
-using KMBrigadeiria.Repositories.Interfaces;
-using KMBrigadeiria.Services;
-using KMBrigadeiria.Services.Interfaces;
+using KMBrigadeiria.Authentication.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,20 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-#region Service Layer
-builder.Services.AddScoped<IClientService, ClientService>();
-#endregion
-
-#region Repository Layer
-builder.Services.AddScoped<IAddressRepository, AddressRepository>();
-builder.Services.AddScoped<IClientRepository, ClientRepository>();
-#endregion
-
 #region DB Configuration
 string mySQLConnectionString = builder.Configuration.GetConnectionString("KMBrigadeiriaConnection");
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 30));
 
-builder.Services.AddDbContext<KMContext>(opts => opts.UseLazyLoadingProxies().UseMySql(mySQLConnectionString, serverVersion));
+builder.Services.AddDbContext<AuthDbContext>(opts => opts.UseLazyLoadingProxies().UseMySql(mySQLConnectionString, serverVersion));
+
+builder.Services.AddIdentity<IdentityUser<int>, IdentityRole<int>>().AddEntityFrameworkStores<AuthDbContext>();
 #endregion
 
 #region AutoMapper
