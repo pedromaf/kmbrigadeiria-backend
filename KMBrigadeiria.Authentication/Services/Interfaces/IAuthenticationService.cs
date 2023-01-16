@@ -6,5 +6,6 @@ namespace KMBrigadeiria.Authentication.Services.Interfaces
     public interface IAuthenticationService
     {
         public Token UserLogin(LoginRequest request);
+        public void Logout();
     }
 }

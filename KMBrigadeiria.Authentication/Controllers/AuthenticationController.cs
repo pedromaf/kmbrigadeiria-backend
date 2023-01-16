@@ -1,7 +1,10 @@
 ﻿using KMBrigadeiria.Authentication.Models;
 using KMBrigadeiria.Authentication.Models.Requests;
 using KMBrigadeiria.Authentication.Services.Interfaces;
+using KMBrigadeiria.Authentication.Util;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using System.Net;
 
 namespace KMBrigadeiria.Authentication.Controllers
@@ -16,14 +19,9 @@ namespace KMBrigadeiria.Authentication.Controllers
             _authenticationService = service;
         }
 
-        [HttpPost]
+        [HttpPost("login")]
         public IActionResult Login(LoginRequest request)
         {
-            if (!ModelState.IsValid)
-            {
-                return StatusCode((int)HttpStatusCode.BadRequest, ModelState);
-            }
-
             try
             {
                 Token token = _authenticationService.UserLogin(request);
@@ -32,7 +30,22 @@ namespace KMBrigadeiria.Authentication.Controllers
             }
             catch (Exception exc) 
             {
-                return StatusCode((int)HttpStatusCode.InternalServerError, exc.Message);
+                return this.HandleException(exc);
+            }
+        }
+
+        [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            try
+            {
+                _authenticationService.Logout();
+
+                return Ok();
+            }
+            catch (Exception exc)
+            {
+                return this.HandleException(exc);
             }
         }
     }

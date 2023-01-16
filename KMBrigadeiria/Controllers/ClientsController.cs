@@ -1,7 +1,9 @@
 ﻿using KMBrigadeiria.Models.DTOs;
 using KMBrigadeiria.Services.Interfaces;
 using KMBrigadeiria.Util;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace KMBrigadeiria.Controllers
 {
@@ -17,6 +19,7 @@ namespace KMBrigadeiria.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public IActionResult CreateClient(CreateClientDTO clientDTO)
         {
             try
@@ -32,6 +35,7 @@ namespace KMBrigadeiria.Controllers
         }
 
         [HttpPost("{clientId}/address")]
+        [Authorize(Roles = "admin")]
         public IActionResult AddClientAddress(long clientId, CreateAddressDTO addressDTO)
         {
             try
@@ -47,6 +51,7 @@ namespace KMBrigadeiria.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "admin")]
         public IActionResult GetClientById(long id)
         {
             try
@@ -62,6 +67,7 @@ namespace KMBrigadeiria.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public IActionResult GetAllClients()
         {
             try
@@ -77,6 +83,7 @@ namespace KMBrigadeiria.Controllers
         }
 
         [HttpPatch]
+        [Authorize(Roles = "admin")]
         public IActionResult UpdateClient(UpdateClientDTO updateClientDTO)
         {
             try
@@ -92,6 +99,7 @@ namespace KMBrigadeiria.Controllers
         }
 
         [HttpPatch("{clientId}/address")]
+        [Authorize(Roles = "admin")]
         public IActionResult UpdateClientAddress(long clientId, UpdateAddressDTO updateAddressDTO)
         {
             try
@@ -107,6 +115,7 @@ namespace KMBrigadeiria.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "admin")]
         public IActionResult DeleteClient(long id)
         {
             try
@@ -122,6 +131,7 @@ namespace KMBrigadeiria.Controllers
         }
 
         [HttpDelete("{clientId}/address")]
+        [Authorize(Roles = "admin")]
         public IActionResult DeleteClientAddress(long clientId)
         {
             try
