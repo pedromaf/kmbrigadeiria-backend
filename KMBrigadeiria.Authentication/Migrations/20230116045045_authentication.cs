@@ -188,6 +188,21 @@ namespace KMBrigadeiria.Authentication.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { 1, "46ef734f-1740-4d53-bd79-30b1c5b1336a", "admin", "ADMIN" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { 1, 0, "8be3e70c-3823-4967-bf0b-2d95c0fb616d", "pedro.maf666@gmail.com", true, false, null, "PEDRO.MAF666@GMAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAEK/D8SUuPC6C3H2GE/+zB8ONt9KnKhjL+mz42HjX1zspVHUJC3EUivpNw+D5Mq/Gdw==", null, false, "7cb5fec8-c50c-4a0d-981b-b797bc5eb9bb", false, "admin" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { 1, 1 });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",

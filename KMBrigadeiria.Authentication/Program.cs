@@ -1,4 +1,6 @@
 using KMBrigadeiria.Authentication.Data;
+using KMBrigadeiria.Authentication.Services;
+using KMBrigadeiria.Authentication.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+#region Service Layer
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
+#endregion
 
 #region DB Configuration
 string mySQLConnectionString = builder.Configuration.GetConnectionString("KMBrigadeiriaConnection");
