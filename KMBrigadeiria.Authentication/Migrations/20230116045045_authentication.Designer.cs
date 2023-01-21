@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KMBrigadeiria.Authentication.Migrations
 {
     [DbContext(typeof(AuthDbContext))]
-    [Migration("20230116030627_authentication")]
+    [Migration("20230116045045_authentication")]
     partial class authentication
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,6 +46,15 @@ namespace KMBrigadeiria.Authentication.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ConcurrencyStamp = "46ef734f-1740-4d53-bd79-30b1c5b1336a",
+                            Name = "admin",
+                            NormalizedName = "ADMIN"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -133,6 +142,24 @@ namespace KMBrigadeiria.Authentication.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "8be3e70c-3823-4967-bf0b-2d95c0fb616d",
+                            Email = "pedro.maf666@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "PEDRO.MAF666@GMAIL.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEK/D8SUuPC6C3H2GE/+zB8ONt9KnKhjL+mz42HjX1zspVHUJC3EUivpNw+D5Mq/Gdw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7cb5fec8-c50c-4a0d-981b-b797bc5eb9bb",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
@@ -191,6 +218,13 @@ namespace KMBrigadeiria.Authentication.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            RoleId = 1
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
